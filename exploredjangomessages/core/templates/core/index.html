@@ -1,0 +1,41 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explore Django | Messages</title>
+
+    <style>
+        .info {
+            padding: 10px;
+            background: blue;
+        }
+
+        .success {
+            padding: 10px;
+            background: green;
+        }
+
+        .notification {
+            margin: 20px;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <section class="section">
+        <h1 class="title">Explore Django | Messages</h1>
+
+        <form method="post" action=".">
+            {% csrf_token %}
+
+            <button>Submit</button>
+        </form>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="{{ message.tags }}">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+    </section>
+</body>
+</html>
