@@ -258,3 +258,100 @@ pero si le damos al botón que acabamos de crear
 y listo con esto terminamos, como dice el buen Stein en su video, si queremos usar mas o adentrarnos mal al tema esta el link a la documentación
 
 https://docs.djangoproject.com/en/4.0/ref/contrib/messages/
+
+intentaremos una nueva funcionalidad para implementarla en el proyecto de Ecommerce https://github.com/kei-kusanagi/Ecommerce
+
+para esto usaremos la pagina https://sweetalert2.github.io
+![image](IMG%20README/Pasted%20image%2020220719103203.png)
+
+para esto, tenemos que añadir ya sea un ``npm install sweetalert2`` o para términos de practicar mejor con su CDN ``<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>``
+![image](IMG%20README/Pasted%20image%2020220719103916.png)
+Este lo pondremos justo antes de usar el script, o en dado caso en nuestro archivo base.html si lo tuviéramos, en este proyecto solo tenemos el index así que lo pondremos allí quitando nuestro anterior `<style>` que habíamos creado para estos mensajes
+```
+...
+
+    <title>Explore Django | Messages</title>
+
+</head>
+
+<body>
+
+    <section class="section">
+
+        <h1 class="title">Explore Django | Messages</h1>
+
+  
+
+        <form method="post" action=".">
+
+            {% csrf_token %}
+
+  
+
+            <button>Submit</button>
+
+        </form>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {% if messages %}
+
+            {% for message in messages %}
+...
+```
+
+ahora en donde tenemos nuestro if para mostrar los mensajes, quitamos el `<div>` y ponemos nuestro nuevo `<script>` según la documentación
+![image](IMG%20README/Pasted%20image%2020220719104019.png)
+
+solo que le cambiaremos para que el icono sea el de 'success', el 'title' sea nuestros `{{ message.tags }}` y el 'text' sea el `{{ message }}` basado en el framework de mensajes de Django que estamos viendo
+
+```
+...
+<body>
+
+    <section class="section">
+
+        <h1 class="title">Explore Django | Messages</h1>
+
+        <form method="post" action=".">
+
+            {% csrf_token %}
+
+            <button>Submit</button>
+
+        </form>
+
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <script>
+                    Swal.fire({
+
+                        title: "{{ message.tags }}"
+
+                        text: "{{ message }}",
+
+                        icon: 'success',
+                    })
+
+                </script>
+
+            {% endfor %}
+
+        {% endif %}
+
+    </section>
+
+</body>
+
+...
+```
+
+
+ahora si damos en el botón de Submit nos saldrá una bonita animación
+![image](IMG%20README/Pasted%20image%2020220719104709.png)
+
+Ahora a jugar con las demás mensajes que podemos poner e implementarlo en nuestra pagina de Ecommerce 😁
