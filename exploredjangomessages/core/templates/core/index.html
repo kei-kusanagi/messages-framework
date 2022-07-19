@@ -4,23 +4,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Explore Django | Messages</title>
-
-    <style>
-        .info {
-            padding: 10px;
-            background: blue;
-        }
-
-        .success {
-            padding: 10px;
-            background: green;
-        }
-
-        .notification {
-            margin: 20px;
-            color: white;
-        }
-    </style>
 </head>
 <body>
     <section class="section">
@@ -34,14 +17,13 @@
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         {% if messages %}
             {% for message in messages %}
-            <script>
-                Swal.fire({
-                    title: "Felicitaciones",
-                    text: "{{ message }}",
-                    icon: 'success',
-                })
-            </script>
-                <!-- <div class="{{ message.tags }}">{{ message }}</div> -->
+                <script>
+                    Swal.fire({
+                        title: "{{ message.tags }}",
+                        text: "{{ message }}",
+                        icon: 'success',
+                    })
+                </script>
             {% endfor %}
         {% endif %}
     </section>
