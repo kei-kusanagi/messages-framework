@@ -349,7 +349,7 @@ solo que le cambiaremos para que el icono sea el de 'success', el 'title' sea nu
 
 ...
 ```
-
+![image](IMG%20README/Pasted%20image%2020220719110312.png)
 
 ahora si damos en el botón de Submit nos saldrá una bonita animación
 ![image](IMG%20README/Pasted%20image%2020220719104709.png)
