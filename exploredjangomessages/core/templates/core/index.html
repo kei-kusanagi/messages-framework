@@ -31,11 +31,20 @@
 
             <button>Submit</button>
         </form>
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         {% if messages %}
             {% for message in messages %}
-                <div class="{{ message.tags }}">{{ message }}</div>
+            <script>
+                Swal.fire({
+                    title: "Felicitaciones",
+                    text: "{{ message }}",
+                    icon: 'success',
+                })
+            </script>
+                <!-- <div class="{{ message.tags }}">{{ message }}</div> -->
             {% endfor %}
         {% endif %}
     </section>
+    
 </body>
 </html>
